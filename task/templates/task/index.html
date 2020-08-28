@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Список изображений</h1>
+    {% for obj in data %}
+    <h2><a href="{% url 'detail' pk=obj.pk %}">{{ obj.image.name }}</a> </h2>
+    {% endfor %}
+    <a href="{% url 'add_image' %}"> Добавить изображение </a>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+        <img src="{{ data.image.url }}" style=" width:
+                {% if data.size_set.values.last.width is not 0 and data.size_set.values.last.width is not None %}
+            {{ data.size_set.values.last.width }}px
+            {% else %}
+            {{ data.image.width }}px
+        {% endif %}
+                ;height:
+                {%if  data.size_set.values.last.height is not 0  and data.size_set.values.last.width is not  None %}
+                    {{ data.size_set.values.last.height }}px
+            {% else %}
+            {{ data.image.height }}px
+        {% endif %}">
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+            {{ field }}
+            {{field.label }}
+        {% endfor %}
+        <button type="submit">Изменить разрешение</button>
+    </form>
+    <a href="{% url 'index' %}">Вернуться к списку изображений</a>
+
+</body>
+</html>
